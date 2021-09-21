@@ -1,17 +1,15 @@
 version: 2.1
 
-#wordpress-version-matrix: &wordpress-version-matrix
-#  matrix:
-#    parameters:
-#      wp-version: [ "5.5", "5.7.2"]
+wordpress-version-matrix: &wordpress-version-matrix
+  matrix:
+    parameters:
+      wp-version: [ "5.5", "5.7.2"]
 
 workflows:
   lint-test-and-build:
     jobs:
       - functional-tests:
-          matrix:
-            parameters:
-              wp-version: [ "5.5", "5.7.2" ]
+          <<: *wordpress-version-matrix
           filters:
             branches:
               ignore: /^.*-built$/
