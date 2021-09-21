@@ -1,0 +1,57 @@
+version: 2.1
+
+#wordpress-version-matrix: &wordpress-version-matrix
+#  matrix:
+#    parameters:
+#      wp-version: [ "5.5", "5.7.2"]
+
+workflows:
+  lint-test-and-build:
+    jobs:
+      - functional-tests:
+          matrix:
+            parameters:
+              wp-version: [ "5.5", "5.7.2" ]
+          filters:
+            branches:
+              ignore: /^.*-built$/
+
+      - build:
+          matrix:
+            parameters:
+              wp-version1: [ "5.5", "5.7.2" ]
+          requires:
+              - functional-tests-<< matrix.wp-version >>
+          filters:
+            branches:
+              only:
+                - master
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.4-browsers
+    steps:
+      - checkout
+      - run:
+          name: is this working
+          command: |
+            echo "in build"
+
+
+
+  functional-tests:
+    machine:
+      image: ubuntu-2004:202104-01
+    parameters:
+      wp-version:
+        type: string
+        default: latest
+    steps:
+      - checkout
+      - run:
+          name: is this working
+          command: |
+            echo " wp version << parameters.wp-version >> "
+            echo "in functional tests"
+
