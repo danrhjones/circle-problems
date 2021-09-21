@@ -17,11 +17,11 @@ workflows:
               ignore: /^.*-built$/
 
       - build:
-          matrix:
-            parameters:
-              wp-version1: [ "5.5", "5.7.2" ]
-#          requires:
-#              - functional-tests-<< matrix.wp-version >>
+#          matrix:
+#            parameters:
+#              wp-version: [ "5.5", "5.7.2" ]
+          requires:
+              - functional-tests
           filters:
             branches:
               only:
