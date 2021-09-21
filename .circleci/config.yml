@@ -20,8 +20,8 @@ workflows:
           matrix:
             parameters:
               wp-version1: [ "5.5", "5.7.2" ]
-          requires:
-              - functional-tests-<< matrix.wp-version >>
+#          requires:
+#              - functional-tests-<< matrix.wp-version >>
           filters:
             branches:
               only:
