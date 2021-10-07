@@ -24,18 +24,18 @@ workflows:
 #             - functional-tests
       - deploy-build:
           requires:
-            - functional-tests
+            - approve-build
 
 jobs:
-  approve-build:
-    docker:
-      - image: circleci/php:7.4-browsers
-    steps:
-      - checkout
-      - run:
-          name: approve build
-          command: |
-            echo "approve build"
+#   approve-build:
+#     docker:
+#       - image: circleci/php:7.4-browsers
+#     steps:
+#       - checkout
+#       - run:
+#           name: approve build
+#           command: |
+#             echo "approve build"
 
   deploy-build:
     docker:
