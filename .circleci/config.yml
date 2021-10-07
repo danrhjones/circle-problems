@@ -18,6 +18,10 @@ workflows:
           type: approval
           requires:
             - functional-tests
+          filters:
+            branches:
+              only:
+                - master
 #       - build:
 #           type: approval
 #           requires:
