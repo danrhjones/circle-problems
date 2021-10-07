@@ -15,6 +15,7 @@ workflows:
               ignore: /^.*-built$/
 
       - build:
+          type: approval
           requires:
               - functional-tests
           filters:
