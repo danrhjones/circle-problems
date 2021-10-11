@@ -138,9 +138,9 @@ for commit in commits:
             .format(commit),
         method='GET',
         headers={
-            'Authorization': 'token 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'
-        },
-            )
+            'Authorization': 'token {}'.format(os.getenv('github_token'))
+            },
+        )
     try:
         with urllib.request.urlopen(req) as response:
             response_raw_body = response.read()
