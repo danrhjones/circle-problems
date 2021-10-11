@@ -62,6 +62,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: echo this
+          command: python3 things.py
+      - run:
           name: is this working
           command: |
             echo " wp version << parameters.wp-version >> "
