@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@4.4.4
+
 wordpress-version-matrix: &wordpress-version-matrix
   matrix:
     parameters:
@@ -61,6 +64,23 @@ jobs:
         default: latest
     steps:
       - checkout
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text":"here we need to add ze text"
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
       - run:
           name: echo this
           command: python3 .circleci/things.py
