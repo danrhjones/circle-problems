@@ -71,7 +71,7 @@ jobs:
           name: echo this
           command: |
             python --version
-          $(.circleci/things.py)
+             $(.circleci/things.py)
 
       - run:
           name: is this working
