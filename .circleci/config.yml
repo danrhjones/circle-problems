@@ -56,8 +56,8 @@ jobs:
 
 
   functional-tests:
-    docker:
-      - image: cimg/base:2021.01
+    machine:
+      image: ubuntu-2004:202104-01
     parameters:
       wp-version:
         type: string
@@ -70,6 +70,11 @@ jobs:
       - run:
           name: echo this
           command: |
+            PYTHON=`which python`
+            sudo mv $PYTHON ${PYTHON}2
+
+            PYTHON3=`which python3`
+            sudo mv $PYTHON3 /usr/bin/python
             python --version
              $(.circleci/things.py)
 
