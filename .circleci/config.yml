@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@4.4.4
+
 wordpress-version-matrix: &wordpress-version-matrix
   matrix:
     parameters:
@@ -65,8 +68,29 @@ jobs:
           name: echo this
           command: python3 .circleci/things.py
       - run:
+          name: echo this
+          command: $(.circleci/things.py)
+
+      - run:
           name: is this working
           command: |
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
+#      - slack/notify:
+#          custom: |
+#            {
+#              "blocks": [
+#                {
+#                  "type": "section",
+#                  "fields": [
+#                    {
+#                      "type": "plain_text",
+#                      "text":"here we need to add ze text"
+#                      "emoji": true
+#                    }
+#                  ]
+#                }
+#              ]
+#            }
+#          event: always
 
