@@ -70,7 +70,7 @@ jobs:
       - run:
           name: Set Python version
           command: |
-              pyenv global 3.9.1
+              pyenv global 3.9.4
               python --version
               $(.circleci/things.py)
 
