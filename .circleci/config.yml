@@ -56,8 +56,8 @@ jobs:
 
 
   functional-tests:
-    machine:
-      image: ubuntu-2004:202104-01
+    docker:
+      - image: cimg/base:2021.01
     parameters:
       wp-version:
         type: string
