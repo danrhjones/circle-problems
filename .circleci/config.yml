@@ -65,15 +65,15 @@ jobs:
         default: latest
     steps:
       - checkout
-      - run:
-          name: echo this
-          command: python3 .circleci/things.py
+#      - run:
+#          name: echo this
+#          command: python3 .circleci/things.py
       - run:
           name: Set Python version
           command: |
               pyenv global 3.9.4
               python --version
-              echo $(.circleci/things.py)
+#              echo $(.circleci/things.py)
 
       - run:
           name: is this working
