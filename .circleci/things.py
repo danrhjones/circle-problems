@@ -80,7 +80,7 @@ except PipelineError:
 pipelines = parsed_response['items']
 
 assert 0 < len(pipelines), \
-    'Circle thinks there are no pipelines which is impossible'
+    'Circle thinks there are no pipasdsafdsfelines which is impossible'
 
 logger.info('Found %d pipelines', len(pipelines))
 
