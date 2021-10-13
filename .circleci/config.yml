@@ -81,7 +81,7 @@ jobs:
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
       - slack/notify:
-          channel: "general"
+          channel: "cp-produce-internal"
           custom: |
             {
               "blocks": [
