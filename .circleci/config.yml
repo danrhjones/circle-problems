@@ -12,6 +12,7 @@ workflows:
   lint-test-and-build:
     jobs:
       - functional-tests:
+          context: slack
           <<: *wordpress-version-matrix
           filters:
             branches:
@@ -80,6 +81,7 @@ jobs:
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
       - slack/notify:
+
           custom: |
             {
               "blocks": [
