@@ -90,7 +90,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text":"testing testing 123"
+                      "text":"testing testing 123",
                       "emoji": true
                     }
                   ]
