@@ -72,28 +72,28 @@ jobs:
           command: |
               pyenv global 3.9.4
               python --version
-              $(.circleci/things.py)
+              echo $(.circleci/things.py)
 
       - run:
           name: is this working
           command: |
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
-#      - slack/notify:
-#          custom: |
-#            {
-#              "blocks": [
-#                {
-#                  "type": "section",
-#                  "fields": [
-#                    {
-#                      "type": "plain_text",
-#                      "text":"here we need to add ze text"
-#                      "emoji": true
-#                    }
-#                  ]
-#                }
-#              ]
-#            }
-#          event: always
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": $(.circleci/things.py)
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
 
