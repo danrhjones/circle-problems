@@ -83,19 +83,19 @@ jobs:
       - slack/notify:
 
           custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": $(.circleci/things.py)
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "plain_text",
+                    "text": "$(.circleci/things.py)",
+                    "emoji": true
+                  }
+                ]
+              }
+            ]
+          }
           event: always
 
