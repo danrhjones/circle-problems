@@ -64,29 +64,33 @@ jobs:
         default: latest
     steps:
       - checkout
-      - slack/notify:
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text":"here we need to add ze text"
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
       - run:
           name: echo this
           command: python3 .circleci/things.py
+      - run:
+          name: echo this
+          command: $(.circleci/things.py)
+
       - run:
           name: is this working
           command: |
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
+#      - slack/notify:
+#          custom: |
+#            {
+#              "blocks": [
+#                {
+#                  "type": "section",
+#                  "fields": [
+#                    {
+#                      "type": "plain_text",
+#                      "text":"here we need to add ze text"
+#                      "emoji": true
+#                    }
+#                  ]
+#                }
+#              ]
+#            }
+#          event: always
 
