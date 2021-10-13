@@ -68,15 +68,11 @@ jobs:
           name: echo this
           command: python3 .circleci/things.py
       - run:
-          name: echo this
+          name: Set Python version
           command: |
-            PYTHON=`which python`
-            sudo mv $PYTHON ${PYTHON}2
-
-            PYTHON3=`which python3`
-            sudo mv $PYTHON3 /usr/bin/python
-            python --version
-             $(.circleci/things.py)
+              pyenv global 3.9.1
+              python --version
+              $(.circleci/things.py)
 
       - run:
           name: is this working
