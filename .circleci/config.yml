@@ -69,7 +69,9 @@ jobs:
           command: python3 .circleci/things.py
       - run:
           name: echo this
-          command: $(.circleci/things.py)
+          command: |
+            python --version
+          $(.circleci/things.py)
 
       - run:
           name: is this working
