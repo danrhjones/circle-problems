@@ -81,19 +81,18 @@ jobs:
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
       - slack/notify:
-          channel: "C02HK0YTJFP"
+#          channel: "C02HK0YTJFP"
+          channel: "general"
           custom: |
             {
               "blocks": [
                 {
                   "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text":"testing testing 123",
-                      "emoji": true
-                    }
-                  ]
+                  "text": {
+                    "type": "plain_text",
+                    "text": "$(.circleci/things.py)",
+                    "emoji": true
+                  }
                 }
               ]
             }
