@@ -91,6 +91,7 @@ jobs:
                   "text": {
                     "type": "plain_text",
                     "text": "$(.circleci/things.py | tr ';' '\n')",
+                    "emoji": true
                   }
                 }
               ]
