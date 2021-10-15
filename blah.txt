@@ -9,3 +9,4 @@ testing
 donkey
 another
 bikes
+dont like emoji
