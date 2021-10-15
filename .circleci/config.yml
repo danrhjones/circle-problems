@@ -90,8 +90,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "plain_text",
-                    "text": "$(.circleci/things.py)",
-                    "emoji": true
+                    "text": "$(.circleci/things.py | tr ';' '\n')",
                   }
                 }
               ]
