@@ -129,7 +129,7 @@ for workflow in workflows:
     assert workflow.get('id'), \
         '‘{}’ has no ‘id’ key which is impossible'.format(workflow)
 
-commitMessages = []
+commitMessages = ""
 
 for commit in commits:
 
@@ -137,9 +137,7 @@ for commit in commits:
         url='https://api.github.com/search/issues?q={}'
             .format(commit),
         method='GET',
-        headers={
-            'Authorization': 'token {}'.format(os.getenv('github_token'))
-            },
+        headers={'Authorization': 'token {}'.format(os.getenv('github_token'))},
         )
     try:
         with urllib.request.urlopen(req) as response:
@@ -151,6 +149,7 @@ for commit in commits:
         raise
 
     for i in pythonObj['items']:
-        commitMessages.append(i['title'])
+        commitMessages += (i['title'])
+        commitMessages += ";"
 
 print(commitMessages)
