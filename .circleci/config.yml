@@ -30,9 +30,17 @@ workflows:
           type: approval
           requires:
             - functional-tests
+          filters:
+            branches:
+              only:
+                - master
       - deploy-build:
           requires:
             - approve-build
+          filters:
+            branches:
+              only:
+                - master
 
 jobs:
   staging-build:
