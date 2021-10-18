@@ -90,7 +90,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "plain_text",
-                    "text": "$(.circleci/things.py)",
+                    "text": "Hi all, we are about to release the following to production \n\n *$(.circleci/things.py)*",
                     "emoji": true
                   }
                 }
