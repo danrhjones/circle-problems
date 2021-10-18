@@ -17,19 +17,17 @@ workflows:
           filters:
             branches:
               ignore: /^.*-built$/
-
-      - approve-build:
-          type: approval
+      - staging-build:
           requires:
             - functional-tests
           filters:
             branches:
               only:
                 - master
-      - staging-build:
+      - approve-build:
           type: approval
           requires:
-            - functional-tests
+            - staging-build
           filters:
             branches:
               only:
