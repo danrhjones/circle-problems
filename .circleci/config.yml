@@ -26,24 +26,46 @@ workflows:
             branches:
               only:
                 - master
-#       - build:
-#           type: approval
-#           requires:
-#             - functional-tests
+      - staging-build:
+          type: approval
+          requires:
+            - functional-tests
+          filters:
+            branches:
+              only:
+                - master
       - deploy-build:
           requires:
             - approve-build
+          filters:
+            branches:
+              only:
+                - master
 
 jobs:
-#   approve-build:
-#     docker:
-#       - image: circleci/php:7.4-browsers
-#     steps:
-#       - checkout
-#       - run:
-#           name: approve build
-#           command: |
-#             echo "approve build"
+  staging-build:
+    docker:
+     - image: circleci/php:7.4-browsers
+    steps:
+     - checkout
+     - slack/notify:
+         channel: "general"
+         # channel: C02HK0YTJFP
+         custom: |
+           {
+             "blocks": [
+               {
+                 "type": "section",
+                 "text": {
+                   "type": "plain_text",
+                   "text": "Hi all, we are about to release the following to production \n $(.circleci/things.py)",
+                   "emoji": true
+                 }
+               }
+             ]
+           }
+         event: always
+
 
   deploy-build:
     docker:
@@ -65,36 +87,31 @@ jobs:
         default: latest
     steps:
       - checkout
-#      - run:
-#          name: echo this
-#          command: python3 .circleci/things.py
       - run:
           name: Set Python version
           command: |
               pyenv global 3.9.4
               python --version
-#              echo $(.circleci/things.py)
-
       - run:
           name: is this working
           command: |
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
-      - slack/notify:
-#          channel: C02HK0YTJFP
-          channel: "general"
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Hi all, we are about to release the following to production \n\n $(.circleci/things.py)",
-                    "emoji": true
-                  }
-                }
-              ]
-            }
-          event: always
+#      - slack/notify:
+##          channel: C02HK0YTJFP
+#          channel: "general"
+#          custom: |
+#            {
+#              "blocks": [
+#                {
+#                  "type": "section",
+#                  "text": {
+#                    "type": "plain_text",
+#                    "text": "Hi all, we are about to release the following to production \n $(.circleci/things.py)",
+#                    "emoji": true
+#                  }
+#                }
+#              ]
+#            }
+#          event: always
 
