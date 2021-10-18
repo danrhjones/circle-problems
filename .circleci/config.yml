@@ -56,7 +56,7 @@ jobs:
                  "type": "section",
                  "text": {
                    "type": "plain_text",
-                   "text": "Hi all, we are about to release the following to production \n $(.circleci/things.py)",
+                   "text": "Hi all, we are about to release the following to production \n $(.circleci/get_on_hold_commit_messages.py)",
                    "emoji": true
                  }
                }
@@ -74,6 +74,28 @@ jobs:
           name: deploy build
           command: |
             echo "deploy build"
+      - slack/notify:
+          channel: "general"
+          # channel: C02HK0YTJFP
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Hi all, we have now deployed the following to production \n $(.circleci/get_on_hold_commit_messages.py)",
+                    "emoji": true
+                  }
+                }
+              ]
+            }
+          event: always
+      - run:
+          name: cancel on_hold workflows
+          command: |
+            $(.circleci/cancel_workflow.py)
+
 
 
   functional-tests:
