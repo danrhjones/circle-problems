@@ -33,6 +33,7 @@ workflows:
               only:
                 - master
       - deploy-build:
+          context: slack
           requires:
             - approve-build
           filters:
