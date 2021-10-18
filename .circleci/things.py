@@ -149,8 +149,7 @@ for commit in commits:
         raise
 
     for i in pythonObj['items']:
-        commitMessages = (i['title'])
+        commitMessages += (i['title'])
         # commitMessages += "; "
-        print(commitMessages)
 
-# print(commitMessages)
+print(commitMessages)
