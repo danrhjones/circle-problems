@@ -12,12 +12,12 @@ workflows:
   lint-test-and-build:
     jobs:
       - functional-tests:
-          context: slack
           <<: *wordpress-version-matrix
           filters:
             branches:
               ignore: /^.*-built$/
       - staging-build:
+          context: slack
           requires:
             - functional-tests
           filters:
