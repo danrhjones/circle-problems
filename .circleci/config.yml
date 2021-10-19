@@ -47,6 +47,8 @@ jobs:
      - image: circleci/php:7.4-browsers
     steps:
      - checkout
+     - run:
+         command: .circleci/get_on_hold_commit_messages.py
      - slack/notify:
          channel: "general"
          # channel: C02HK0YTJFP
