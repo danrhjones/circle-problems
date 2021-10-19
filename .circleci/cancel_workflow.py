@@ -127,23 +127,23 @@ for i in Cancel.get_workflows():
 
 start = workflow_ids.index(os.getenv('CIRCLE_WORKFLOW_ID'))
 del workflow_ids[start:len(workflow_ids)]
-
-for workflow_id in workflow_ids:
-    req = urllib.request.Request(
-        url='https://circleci.com/api/v2/workflow/{}/cancel'.format(workflow_id),
-        method='POST',
-        headers={'Circle-Token': os.getenv('circle_token')}
-    )
-    try:
-        with urllib.request.urlopen(req) as response:
-            print("this working?")
-            response_raw_body = response.read()
-            parsed_response = json.loads(response_raw_body)
-            if parsed_response.get('message') == "Accepted.":
+print(workflow_ids)
+if not workflow_ids:
+    print("nothing to cancel")
+else:
+    for workflow_id in workflow_ids:
+        req = urllib.request.Request(
+            url='https://circleci.com/api/v2/workflow/{}/cancel'.format(workflow_id),
+            method='POST',
+            headers={'Circle-Token': os.getenv('circle_token')}
+        )
+        try:
+            with urllib.request.urlopen(req) as response:
+                print("this working?")
+                response_raw_body = response.read()
+                parsed_response = json.loads(response_raw_body)
                 print("cancelled {}".format(workflow_id))
-            else:
-                print("nothing to cancel")
 
-    except (HTTPError, URLError) as error:
-        logging.error('Data not retrieved because %s\nURL: %s', error, req)
-        raise
+        except (HTTPError, URLError) as error:
+            logging.error('Data not retrieved because %s\nURL: %s', error, req)
+            raise
