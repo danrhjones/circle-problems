@@ -155,6 +155,6 @@ for commit in commits:
 
     for i in pythonObj['items']:
         commitMessages += (i['title'])
-        commitMessages += "\n"
+        commitMessages += ";"
 
 print(commitMessages)
