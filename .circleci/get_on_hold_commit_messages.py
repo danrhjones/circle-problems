@@ -114,7 +114,6 @@ class Workflow:
                         workflow
                     )
                 if workflow['name'] == our_workflow['name']:
-                    print(workflow)
                     if workflow['status'] == 'on_hold':
                         workflow['pipeline'] = pipeline
                         workflows.append(workflow)
