@@ -117,6 +117,8 @@ class Workflow:
                     if workflow['status'] == 'on_hold':
                         workflow['pipeline'] = pipeline
                         workflows.append(workflow)
+                    if workflow['id'] == os.getenv('CIRCLE_WORKFLOW_ID'):
+                        workflows.append(workflow)
 
         workflows.sort(key=operator.itemgetter('created_at'))
 
@@ -155,6 +157,6 @@ for commit in commits:
 
     for i in pythonObj['items']:
         commitMessages += (i['title'])
-        commitMessages += ";"
+        commitMessages += "; "
 
 print(commitMessages)
