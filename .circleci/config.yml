@@ -129,7 +129,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "plain_text",
-                    "text": "something somethign $(.circleci/things.py)",
+                    "text": "something somethign $(.circleci/get_on_hold_commit_messages.py)",
                     "emoji": true
                   }
                 }
