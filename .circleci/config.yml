@@ -95,10 +95,7 @@ jobs:
           event: always
       - run:
           name: cancel on_hold workflows
-          command: |
-            $(.circleci/cancel_workflow.py)
-
-
+          command: .circleci/cancel_workflow.py
 
   functional-tests:
     machine:
