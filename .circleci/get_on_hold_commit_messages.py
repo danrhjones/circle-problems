@@ -132,31 +132,31 @@ class Workflow:
         return json.loads(json.dumps(workflows))
 
 
-# commits = []
-# for i in Workflow.get_workflows():
-#     commits.append(i['pipeline']['vcs']['revision'])
-#
-# commitMessages = ""
-#
-# for commit in commits:
-#
-#     req = urllib.request.Request(
-#         url='https://api.github.com/search/issues?q={}'
-#             .format(commit),
-#         method='GET',
-#         headers={'Authorization': 'token {}'.format(os.getenv('github_token'))},
-#         )
-#     try:
-#         with urllib.request.urlopen(req) as response:
-#             response_raw_body = response.read()
-#             pythonObj = json.loads(response_raw_body)
-#
-#     except (HTTPError, URLError) as error:
-#         logging.error('Data not retrieved because %s\nURL: %s', error, req)
-#         raise
-#
-#     for i in pythonObj['items']:
-#         commitMessages += (i['title'])
-#         commitMessages += "; "
-#
-# print(commitMessages)
+commits = []
+for i in Workflow.get_workflows():
+    commits.append(i['pipeline']['vcs']['revision'])
+
+commitMessages = ""
+
+for commit in commits:
+
+    req = urllib.request.Request(
+        url='https://api.github.com/search/issues?q={}'
+            .format(commit),
+        method='GET',
+        headers={'Authorization': 'token {}'.format(os.getenv('github_token'))},
+        )
+    try:
+        with urllib.request.urlopen(req) as response:
+            response_raw_body = response.read()
+            pythonObj = json.loads(response_raw_body)
+
+    except (HTTPError, URLError) as error:
+        logging.error('Data not retrieved because %s\nURL: %s', error, req)
+        raise
+
+    for i in pythonObj['items']:
+        commitMessages += (i['title'])
+        commitMessages += "; "
+
+print(commitMessages)
