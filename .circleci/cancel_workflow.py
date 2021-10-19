@@ -127,7 +127,7 @@ for i in Cancel.get_workflows():
 
 start = workflow_ids.index(os.getenv('CIRCLE_WORKFLOW_ID'))
 del workflow_ids[start:len(workflow_ids)]
-print(workflow_ids)
+
 for workflow_id in workflow_ids:
     req = urllib.request.Request(
         url='https://circleci.com/api/v2/workflow/{}/cancel'.format(workflow_id),
