@@ -48,6 +48,7 @@ jobs:
      - image: circleci/php:7.4-browsers
     steps:
      - checkout
+     - run: sleep 25
      - slack/notify:
          channel: "general"
          # channel: C02HK0YTJFP
