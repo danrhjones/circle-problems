@@ -83,9 +83,8 @@ jobs:
                 {
                   "type": "section",
                   "text": {
-                    "type": "plain_text",
-                    "text": "Hi all, we have now deployed the following to production \n $(.circleci/get_on_hold_commit_messages.py)",
-                    "emoji": true
+                    "type": "mrkdwn",
+                    "text": "*Hi all, we have now deployed the following to production* \n $(.circleci/get_on_hold_commit_messages.py)"
                   }
                 }
               ]
