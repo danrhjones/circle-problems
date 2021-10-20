@@ -48,7 +48,6 @@ jobs:
      - image: circleci/php:7.4-browsers
     steps:
      - checkout
-     - run: sleep 25
      - slack/notify:
 #         channel: "general"
          channel: C02HK0YTJFP
@@ -59,7 +58,7 @@ jobs:
                  "type": "section",
                  "text": {
                    "type": "plain_text",
-                   "text": "Hi all, we are about to release the following to production \n $(.circleci/get_on_hold_commit_messages.py | tr ';' '\n')",
+                   "text": "Hi all, we are about to release the following to production \n $(.circleci/get_on_hold_commit_messages.py | tr ';' 'blah blah blah')",
                    "emoji": true
                  }
                }
