@@ -49,7 +49,7 @@ jobs:
     steps:
      - checkout
      - slack/notify:
-         channel: C02HK0YTJFP
+         channel: 'C02HK0YTJFP, general'
          custom: |
            {
              "blocks": [
@@ -75,7 +75,7 @@ jobs:
           command: |
             echo "deploy build"
       - slack/notify:
-          channel: C02HK0YTJFP
+          channel: 'C02HK0YTJFP, general'
           custom: |
             {
               "blocks": [
