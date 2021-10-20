@@ -116,3 +116,6 @@ jobs:
           command: |
             echo " wp version << parameters.wp-version >> "
             echo "in functional tests"
+      - slack/notify:
+          channel: C02HK0YTJFP
+          mentions: "$(.circleci/get_on_hold_commit_messages.py | tr '[;]' '[\n]' )"
