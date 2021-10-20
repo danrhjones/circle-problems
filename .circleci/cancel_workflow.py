@@ -116,8 +116,6 @@ for workflow in workflows:
     assert workflow.get('id'), \
         '‘{}’ has no ‘id’ key which is impossible'.format(workflow)
 
-
-
 workflow_ids = []
 for i in json.loads(json.dumps(workflows)):
     workflow_ids.append(i['id'])

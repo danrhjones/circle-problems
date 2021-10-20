@@ -50,8 +50,8 @@ jobs:
      - checkout
      - run: sleep 25
      - slack/notify:
-         channel: "general"
-         # channel: C02HK0YTJFP
+#         channel: "general"
+         channel: C02HK0YTJFP
          custom: |
            {
              "blocks": [
@@ -78,8 +78,8 @@ jobs:
           command: |
             echo "deploy build"
       - slack/notify:
-          channel: "general"
-          # channel: C02HK0YTJFP
+#          channel: "general"
+          channel: C02HK0YTJFP
           custom: |
             {
               "blocks": [
