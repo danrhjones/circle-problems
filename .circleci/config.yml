@@ -49,7 +49,6 @@ jobs:
     steps:
      - checkout
      - slack/notify:
-#         channel: "general"
          channel: C02HK0YTJFP
          custom: |
            {
@@ -58,7 +57,7 @@ jobs:
                  "type": "section",
                  "text": {
                    "type": "mrkdwn",
-                   "text": "*Hi all, we are about to release the following to production* \n $(.circleci/get_on_hold_commit_messages.py |  tr ';' '\n' | )"
+                   "text": "*Hi all, we are about to release the following to production* \n $(.circleci/get_on_hold_commit_messages.py | tr ';' '\n' )"
                  }
                }
              ]
@@ -84,7 +83,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Hi all, we have now deployed the following to production* \n $(.circleci/get_on_hold_commit_messages.py)"
+                    "text": "*Hi all, we have now deployed the following to production* \n $(.circleci/get_on_hold_commit_messages.py | tr ';' '\n' )"
                   }
                 }
               ]
