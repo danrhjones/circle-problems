@@ -58,7 +58,7 @@ jobs:
                  "type": "section",
                  "text": {
                    "type": "plain_text",
-                   "text": "Hi all, we are about to release the following to production \n $(.circleci/get_on_hold_commit_messages.py | tr ';' 'blah blah blah')",
+                   "text": "Hi all, we are about to release the following to production \n $(.circleci/get_on_hold_commit_messages.py | tr ';' '\\n')",
                    "emoji": true
                  }
                }
@@ -86,7 +86,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "plain_text",
-                    "text": "Hi all, we have now deployed the following to production \n $(.circleci/get_on_hold_commit_messages.py | tr ';' '\n')",
+                    "text": "Hi all, we have now deployed the following to production \n $(.circleci/get_on_hold_commit_messages.py | tr ';' '\\n')",
                     "emoji": true
                   }
                 }
