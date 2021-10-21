@@ -42,7 +42,7 @@ workflows:
       - deploy-build:
           context: slack
           requires:
-            - approve-build
+            - send-pre-deploy-message
           filters:
             branches:
               only:
