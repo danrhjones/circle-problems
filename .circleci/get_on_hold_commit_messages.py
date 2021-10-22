@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 ########################################################################
-# Retrieve on_hold workflows for the current project, branch, and
-# workflow name and get the associated git commit hashes
-# Use those hashes to compile a list of the PR titles
+# Retrieve the git commit messages for a list of circleci workflows
 ########################################################################
 
 import json
@@ -15,8 +13,8 @@ from get_workflows import get_workflows
 
 commits = []
 
-for i in json.loads(json.dumps(get_workflows())):
-    commits.append(i['pipeline']['vcs']['revision'])
+for workflow in get_workflows():
+    commits.append(workflow['pipeline']['vcs']['revision'])
 
 commitMessages = ""
 

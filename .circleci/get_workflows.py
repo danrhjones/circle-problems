@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+########################################################################
+# Retrieve on_hold workflows for the current project, branch
+########################################################################
 
 import json
 import logging
@@ -119,4 +122,4 @@ def get_workflows():
         assert workflow.get('id'), \
             '‘{}’ has no ‘id’ key which is impossible'.format(workflow)
 
-    return workflows
+    return json.loads(json.dumps(workflows))
