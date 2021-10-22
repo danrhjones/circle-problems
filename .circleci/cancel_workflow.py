@@ -3,6 +3,7 @@
 ########################################################################
 # Cancel on_hold circleci workflows for the current project
 ########################################################################
+
 import json
 import logging
 import os
@@ -11,8 +12,8 @@ from urllib.error import HTTPError, URLError
 from get_workflows import get_workflows
 
 workflow_ids = []
-for i in json.loads(json.dumps(get_workflows())):
-    workflow_ids.append(i['id'])
+for workflow in get_workflows():
+    workflow_ids.append(workflow['id'])
 
 start = workflow_ids.index(os.getenv('CIRCLE_WORKFLOW_ID'))
 del workflow_ids[start:len(workflow_ids)]
